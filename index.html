@@ -2,16 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Automate Your Repetitive Tasks in 48 Hours</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <title>A&N Studios | Automation That Works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --bg-dark: #0e0e0e;
+      --text-light: #1a1a1a;
+      --text-dark: #f0f0f0;
+      --primary: #4f46e5;
+      --secondary: #fbbf24;
+      --accent: #10b981;
+    }
+    body[data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    body[data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: all 0.3s ease;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .brand {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .theme-toggle button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: inherit;
+      cursor: pointer;
+    }
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      transition: all 0.4s ease-in-out;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--secondary);
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hoverable:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+    .hero-text p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    form input, form textarea, form button {
+      display: block;
+      width: 90%;
+      margin: 1rem auto;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    form button {
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+    }
+    .tier {
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.03);
+    }
+    .tier span {
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .faq-item details {
+      margin-bottom: 1rem;
+      background: rgba(0,0,0,0.05);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+    .faq-item summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .contact-icons a {
+      font-size: 1.6rem;
+      color: var(--primary);
+      transition: 0.3s ease;
+    }
+    .contact-icons a:hover {
+      color: var(--secondary);
+      transform: scale(1.2);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.05);
+    }
+  </style>
 </head>
-<body>
+<body data-theme="light">
+  <div class="top-bar">
+    <a class="brand" href="https://wa.me/254743764852?text=Hi%20A%26N%20Studios%2C%20I%27d%20like%20a%20workflow" target="_blank">A&N Studios</a>
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()" title="Toggle Theme"><i id="theme-icon" class="fas fa-moon"></i></button>
+    </div>
+  </div>
 
-  <!-- Hero -->
-  <section id="hero">
-    <h1>Automate Your Repetitive Tasks in 48 Hours—No Code Required</h1>
-    <p>Get back time, eliminate errors, and scale your business with A&N Studios’ turnkey n8n automations—backed by a 7‑Day Performance Guarantee.</p>
+  <section id="hero" class="hoverable">
+    <h1>Automate Your Repetitive Tasks in 48 Hours</h1>
+    <div class="hero-text">
+      <p><em>No Code Required</em></p>
+      <p><strong>Get back time</strong>, eliminate errors, and <strong>scale your business</strong> with <b>A&N Studios</b>' turnkey <code>n8n</code> automations—<u>backed by a 7‑Day Performance Guarantee</u>.</p>
+      <p>Our solutions empower <i>entrepreneurs, freelancers, and companies</i> to work smarter, not harder.</p>
+    </div>
     <form name="discovery" netlify>
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Email" required>
@@ -20,42 +153,77 @@
     </form>
   </section>
 
-  <!-- How It Works -->
   <section id="how-it-works">
     <h2>How It Works</h2>
-    <ol>
-      <li><strong>Intake & Discovery:</strong> Fill out a 2‑minute form or jump on a quick call.</li>
-      <li><strong>Rapid Deployment:</strong> We configure your custom flow and test it end‑to‑end within 48 hours.</li>
-      <li><strong>Handoff & Thrive:</strong> Receive training, docs, and watch your process run—risk‑free.</li>
-    </ol>
+    <div class="tier hoverable">
+      <h3>Step 1: Discovery & Planning</h3>
+      <p>We begin by understanding your needs through a simple 2-minute form or quick discovery call. From there, we map out the process to automate with clarity and precision.</p>
+    </div>
+    <div class="tier hoverable">
+      <h3>Step 2: Rapid Development</h3>
+      <p>Your custom n8n automation is built and tested in under 48 hours. We focus on speed, accuracy, and seamless integration into your daily workflows.</p>
+    </div>
+    <div class="tier hoverable">
+      <h3>Step 3: Review & Feedback</h3>
+      <p>We walk you through your automation, gather feedback, and refine the solution for a perfect fit.</p>
+    </div>
+    <div class="tier hoverable">
+      <h3>Step 4: Delivery & Training</h3>
+      <p>Once approved, we deliver the full solution with documentation and guide you on usage, ensuring you get the best out of it.</p>
+    </div>
   </section>
 
-  <!-- Pricing Snapshot -->
   <section id="pricing">
-    <h2>Pricing Snapshot</h2>
-    <div class="tier">
-      <h3>Basic</h3>
-      <p>48 hours • \$1,500 one‑time • Only pay if workflow runs flawlessly for 7 days</p>
+    <h2>Pricing</h2>
+    <div class="tier hoverable">
+      <h3>Basic <span>(Most Popular)</span></h3>
+      <p>For small businesses looking to streamline their first automation. Delivered in 48 hours, only pay after flawless 7-day performance. One-time investment of $1,500.</p>
     </div>
-    <div class="tier">
-      <h3>Pro</h3>
-      <p>72 hours • \$3,500 one‑time • Free debugging until SLA (99% uptime for 7 days)</p>
+    <div class="tier hoverable">
+      <h3>Pro <span>(Popular)</span></h3>
+      <p>Designed for growing teams that need stability and support. Includes debugging, 72-hour delivery, and a 7-day 99% uptime SLA. One-time cost of $3,500.</p>
     </div>
-    <div class="tier">
+    <div class="tier hoverable">
       <h3>Enterprise</h3>
-      <p>5 days • \$7,500 one‑time + \$500/mo support • Full refund if SLAs aren’t met in first 14 days</p>
+      <p>Perfect for large teams or complex automations. Includes unlimited workflows, onboarding, and a full refund policy within 14 days. Delivery in 5 days. One-time fee of $7,500 plus $500/month support.</p>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <h2>FAQ</h2>
-    <p><strong>What if I need more than 5 workflows?</strong><br>
-       Upgrade to our Enterprise tier for unlimited flows and monthly check‑ins.</p>
-    <p><strong>Can you integrate custom APIs?</strong><br>
-       Yes—Pro & Enterprise include HTTP calls, JavaScript hooks, and secure credentials.</p>
+    <div class="faq-item">
+      <details><summary>Do I need to code?</summary><p>No. Everything is handled through n8n and visual workflows. No code is required on your end.</p></details>
+      <details><summary>What if I need more workflows?</summary><p>Our Enterprise plan supports unlimited workflows and offers monthly reviews for growth.</p></details>
+      <details><summary>What happens if it doesn’t work?</summary><p>We offer a 7-day performance guarantee with a full refund if your automation doesn’t work as promised.</p></details>
+      <details><summary>Can I integrate with third-party tools?</summary><p>Yes. We support a wide range of APIs and tools including CRMs, payment processors, and more.</p></details>
+    </div>
   </section>
 
-  <script src="js/main.js"></script>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-icons">
+      <a href="tel:+254743764852" title="Phone"><i class="fas fa-phone"></i></a>
+      <a href="https://wa.me/254743764852" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:nnaphtali456@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Jakes08" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/magica.designs0" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/NaphMagica" title="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 A&N Studios — Built with creativity. Powered by automation.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      const current = body.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      body.setAttribute("data-theme", next);
+      icon.className = next === "light" ? "fas fa-moon" : "fas fa-sun";
+    }
+  </script>
 </body>
 </html>
