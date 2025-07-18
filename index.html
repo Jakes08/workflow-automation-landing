@@ -1,228 +1,152 @@
+<!--
+CHANGELOG
+==========
+## [Unreleased]
+- Highlighted Basic package in green
+- Added detailed descriptions to Pricing, FAQ, and Contact sections
+- Fixed button responsiveness by moving Calendly script and ensuring correct init
+- Improved alignment in FAQ and Contact sections
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="description" content="A&N Studios: Automate repetitive tasks in 48 hours with no code required." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A&N Studios | Automation That Works</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    :root {
-      --bg-light: #ffffff;
-      --bg-dark: #0e0e0e;
-      --text-light: #1a1a1a;
-      --text-dark: #f0f0f0;
-      --primary: #4f46e5;
-      --secondary: #fbbf24;
-      --accent: #10b981;
-    }
-    body[data-theme="light"] {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
-    body[data-theme="dark"] {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
     }
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
+    body[data-theme="dark"] {
+      background: #1a1a1a;
+      color: #f0f0f0;
     }
-    .brand {
-      font-family: 'Georgia', serif;
-      font-size: 2rem;
-      color: var(--primary);
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .theme-toggle button {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: inherit;
-      cursor: pointer;
-    }
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-      transition: all 0.4s ease-in-out;
-    }
-    section h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      border-bottom: 2px solid var(--secondary);
-      display: inline-block;
-      margin-bottom: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hoverable:hover {
-      transform: scale(1.02);
-      transition: transform 0.3s ease;
-    }
-    .hero-text p {
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.7;
-    }
-    form input, form textarea, form button {
-      display: block;
-      width: 90%;
-      margin: 1rem auto;
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    form button {
-      background: var(--primary);
-      color: white;
-      cursor: pointer;
-    }
-    .tier {
-      margin-bottom: 2rem;
-      padding: 2rem;
-      border-radius: 10px;
-      background-color: rgba(0,0,0,0.03);
-    }
-    .tier span {
-      font-weight: bold;
-      color: var(--accent);
-    }
-    .faq-item details {
-      margin-bottom: 1rem;
-      background: rgba(0,0,0,0.05);
-      border-radius: 6px;
-      padding: 1rem;
-    }
-    .faq-item summary {
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .contact-icons a {
-      font-size: 1.6rem;
-      color: var(--primary);
-      transition: 0.3s ease;
-    }
-    .contact-icons a:hover {
-      color: var(--secondary);
-      transform: scale(1.2);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: rgba(0,0,0,0.05);
-    }
+    .top-bar { position: fixed; top:0; left:0; width:100%; display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 2rem; backdrop-filter:blur(10px); background:rgba(255,255,255,0.95); z-index:1000; animation:slideDown .5s ease; }
+    body[data-theme="dark"] .top-bar { background:rgba(26,26,26,0.95); }
+    .brand { font-weight:800; font-size:1.6rem; color:#4f46e5; text-decoration:none; }
+    nav a { margin-left:1.5rem; font-weight:600; color:inherit; text-decoration:none; transition:color .3s; }
+    nav a:hover, nav a:focus { color:#4f46e5; }
+    .theme-toggle button { background:none; border:none; font-size:1.2rem; cursor:pointer; color:inherit; transition:transform .3s; }
+    .theme-toggle button:hover { transform:scale(1.2); }
+    section { padding:8rem 2rem 4rem; max-width:1000px; margin:auto; scroll-margin-top:80px; opacity:0; transform:translateY(20px); animation:fadeIn .8s ease forwards; }
+    #hero { padding-top:8rem; text-align:center; background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%); }
+    body[data-theme="dark"] #hero { background:linear-gradient(135deg,#303036 0%,#44444a 100%); }
+    #hero h1 { font-size:2.8rem; font-weight:800; color:#4f46e5; margin-bottom:1rem; }
+    #hero p.lead { font-size:1.2rem; margin-bottom:2rem; color:#555; }
+    body[data-theme="dark"] #hero p.lead { color:#ccc; }
+    .cta { margin-bottom:2rem; }
+    .cta button { background:#10b981; color:#fff; border:none; padding:1rem 2rem; border-radius:8px;
+      font-size:1rem; font-weight:600; cursor:pointer; transition:background .3s,transform .3s; }
+    .cta button:hover { background:#0f9d75; transform:translateY(-3px); }
+    .section-title { font-size:2rem; font-weight:700; color:#4f46e5; margin-bottom:1.5rem; text-align:center; position:relative; }
+    .section-title::after { content:''; width:60px; height:3px; background:#fbbf24; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); }
+    .grid { display:grid; gap:2rem; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+    .card { background:#fff; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.05); padding:2rem; text-align:center; transition:transform .3s,box-shadow .3s; }
+    body[data-theme="dark"] .card { background:#2a2a2e; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+    .card.basic { border:2px solid #10b981; }
+    .card:hover { transform:translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0,0.1); }
+    .card i { font-size:1.8rem; color:#4f46e5; margin-bottom:1rem; }
+    .card h3 { font-size:1.4rem; margin-bottom:0.75rem; }
+    .card p { color:#555; line-height:1.6; }
+    body[data-theme="dark"] .card p { color:#ccc; }
+    #contact .icons { display:flex; justify-content:center; gap:1.5rem; }
+    #contact .icons a { font-size:1.5rem; color:#4f46e5; transition:transform .3s; }
+    #contact .icons a:hover { transform:scale(1.3); }
+    footer { text-align:center; padding:2rem; color:#777; font-size:0.9rem; }
+    body[data-theme="dark"] footer { background:#111; color:#999; }
+    @keyframes fadeIn { to { opacity:1; transform:none; } }
+    @keyframes slideDown { from { transform:translateY(-100%);} to { transform:none;} }
+    @media(max-width:600px) { #hero h1 { font-size:2.2rem; } }
   </style>
 </head>
 <body data-theme="light">
   <div class="top-bar">
-    <a class="brand" href="https://wa.me/254743764852?text=Hi%20A%26N%20Studios%2C%20I%27d%20like%20a%20workflow" target="_blank">A&N Studios</a>
+    <a class="brand" href="#hero">A&amp;N Studios</a>
+    <nav>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <div class="theme-toggle">
-      <button onclick="toggleTheme()" title="Toggle Theme"><i id="theme-icon" class="fas fa-moon"></i></button>
+      <button onclick="toggleTheme()"><i id="theme-icon" class="fas fa-moon"></i></button>
     </div>
   </div>
 
-  <section id="hero" class="hoverable">
+  <section id="hero">
     <h1>Automate Your Repetitive Tasks in 48 Hours</h1>
-    <div class="hero-text">
-      <p><em>No Code Required</em></p>
-      <p><strong>Get back time</strong>, eliminate errors, and <strong>scale your business</strong> with <b>A&N Studios</b>' turnkey <code>n8n</code> automations—<u>backed by a 7‑Day Performance Guarantee</u>.</p>
-      <p>Our solutions empower <i>entrepreneurs, freelancers, and companies</i> to work smarter, not harder.</p>
-    </div>
-    <form name="discovery" netlify>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="notes" placeholder="Tell us your workflow…"></textarea>
-      <button type="submit">Book Your Free Discovery Call</button>
-    </form>
+    <p class="lead">No code required. Save time, eliminate errors, and scale your business with our turnkey n8n workflows.</p>
+    <div class="cta"><button id="scheduleBtn">Book a Free Discovery Call</button></div>
   </section>
 
   <section id="how-it-works">
-    <h2>How It Works</h2>
-    <div class="tier hoverable">
-      <h3>Step 1: Discovery & Planning</h3>
-      <p>We begin by understanding your needs through a simple 2-minute form or quick discovery call. From there, we map out the process to automate with clarity and precision.</p>
-    </div>
-    <div class="tier hoverable">
-      <h3>Step 2: Rapid Development</h3>
-      <p>Your custom n8n automation is built and tested in under 48 hours. We focus on speed, accuracy, and seamless integration into your daily workflows.</p>
-    </div>
-    <div class="tier hoverable">
-      <h3>Step 3: Review & Feedback</h3>
-      <p>We walk you through your automation, gather feedback, and refine the solution for a perfect fit.</p>
-    </div>
-    <div class="tier hoverable">
-      <h3>Step 4: Delivery & Training</h3>
-      <p>Once approved, we deliver the full solution with documentation and guide you on usage, ensuring you get the best out of it.</p>
+    <div class="section-title">How It Works</div>
+    <div class="grid">
+      <div class="card"><i class="fas fa-phone-volume"></i><h3>Discovery Call</h3><p>We map out your needs in a quick call to ensure clarity and set expectations. Includes understanding your tools and goals.</p></div>
+      <div class="card"><i class="fas fa-cogs"></i><h3>Design & Build</h3><p>We craft your n8n workflows within 48 hours, including conditionals, error handling, and notifications.</p></div>
+      <div class="card"><i class="fas fa-rocket"></i><h3>Deploy & Monitor</h3><p>Go live immediately and monitor performance—automations optimized with real-time logging and alerts.</p></div>
     </div>
   </section>
 
   <section id="pricing">
-    <h2>Pricing</h2>
-    <div class="tier hoverable">
-      <h3>Basic <span>(Most Popular)</span></h3>
-      <p>For small businesses looking to streamline their first automation. Delivered in 48 hours, only pay after flawless 7-day performance. One-time investment of $1,500.</p>
-    </div>
-    <div class="tier hoverable">
-      <h3>Pro <span>(Popular)</span></h3>
-      <p>Designed for growing teams that need stability and support. Includes debugging, 72-hour delivery, and a 7-day 99% uptime SLA. One-time cost of $3,500.</p>
-    </div>
-    <div class="tier hoverable">
-      <h3>Enterprise</h3>
-      <p>Perfect for large teams or complex automations. Includes unlimited workflows, onboarding, and a full refund policy within 14 days. Delivery in 5 days. One-time fee of $7,500 plus $500/month support.</p>
+    <div class="section-title">Pricing</div>
+    <div class="grid">
+      <div class="card basic"><i class="fas fa-star"></i><h3>Basic - $99</h3><p>One workflow; 48-hr delivery; 7-day support guarantee.<br><strong>Ideal for simple tasks: lead routing, email alerts, data entry.</strong></p></div>
+      <div class="card"><i class="fas fa-chart-line"></i><h3>Pro - $249</h3><p>Up to 3 workflows; 72-hr delivery; analytics dashboard.<br><strong>Great for medium complexity: multi-step processes, API integrations.</strong></p></div>
+      <div class="card"><i class="fas fa-building"></i><h3>Elite - $499</h3><p>Unlimited workflows; dedicated support; same-day deployment.<br><strong>Best for enterprises: custom logic, team onboarding, SLA contracts.</strong></p></div>
     </div>
   </section>
 
   <section id="faq">
-    <h2>FAQ</h2>
-    <div class="faq-item">
-      <details><summary>Do I need to code?</summary><p>No. Everything is handled through n8n and visual workflows. No code is required on your end.</p></details>
-      <details><summary>What if I need more workflows?</summary><p>Our Enterprise plan supports unlimited workflows and offers monthly reviews for growth.</p></details>
-      <details><summary>What happens if it doesn’t work?</summary><p>We offer a 7-day performance guarantee with a full refund if your automation doesn’t work as promised.</p></details>
-      <details><summary>Can I integrate with third-party tools?</summary><p>Yes. We support a wide range of APIs and tools including CRMs, payment processors, and more.</p></details>
+    <div class="section-title">FAQ</div>
+    <div class="grid" style="justify-content:center; text-align:center;">
+      <div class="card"><i class="fas fa-question-circle"></i><h3>Do I need to code?</h3><p>No—all n8n workflows are built code-free for you. You get a fully managed solution.</p></div>
+      <div class="card"><i class="fas fa-puzzle-piece"></i><h3>Tool Integrations?</h3><p>We connect Google Sheets, CRMs, APIs, Slack, email, WhatsApp, and more.</p></div>
+      <div class="card"><i class="fas fa-shield-alt"></i><h3>Guarantee?</h3><p>If it fails within 7 days, you get your money back. We stand by our service.</p></div>
+      <div class="card"><i class="fas fa-headset"></i><h3>Support?</h3><p>Ongoing maintenance packages to keep automations thriving, including updates and scaling.</p></div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-icons">
-      <a href="tel:+254743764852" title="Phone"><i class="fas fa-phone"></i></a>
-      <a href="https://wa.me/254743764852" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="mailto:nnaphtali456@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/Jakes08" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/magica.designs0" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com/NaphMagica" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <div class="section-title">Contact</div>
+    <p style="text-align:center; max-width:600px; margin:auto; color:#555;">Have questions or want a custom quote? Reach out directly via phone, WhatsApp, or email. We’re here 24/7 to help you automate.</p>
+    <div class="icons">
+      <a href="tel:+254743764852" aria-label="Call Us"><i class="fas fa-phone"></i></a>
+      <a href="https://wa.me/254743764852" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:nnaphtali456@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Jakes08" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/magica.designs0" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 A&N Studios — Built with creativity. Powered by automation.</p>
+    &copy; 2025 A&N Studios — Built with creativity, powered by automation.
   </footer>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('scheduleBtn');
+      if (btn) btn.addEventListener('click', () => Calendly.initPopupWidget({ url: 'https://calendly.com/a-n-studios' }));
+    });
     function toggleTheme() {
-      const body = document.body;
-      const icon = document.getElementById("theme-icon");
-      const current = body.getAttribute("data-theme");
-      const next = current === "light" ? "dark" : "light";
-      body.setAttribute("data-theme", next);
-      icon.className = next === "light" ? "fas fa-moon" : "fas fa-sun";
+      const b=document.body, i=document.getElementById('theme-icon'), next = b.getAttribute('data-theme')==='light'?'dark':'light';
+      b.setAttribute('data-theme', next);
+      i.className = next==='light'?'fas fa-moon':'fas fa-sun';
     }
   </script>
 </body>
